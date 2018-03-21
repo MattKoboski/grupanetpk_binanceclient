@@ -29,8 +29,8 @@ namespace grupa_net_pk_binance_client
 
         public async Task<T> PostRequest<T>(string endpoint, object data)
         {
-            var payload = StringOperations.GetPayload(data);
-            var response = await _httpClient.PostAsync(endpoint, payload);
+            var payload = data.GetPayload();
+            var response = await _httpClient.PostAsync(endpoint, data == null ? null : payload);
             var result = await response.Content.ReadAsStringAsync();
             return JsonConvert.DeserializeObject<T>(result);
         }
@@ -54,5 +54,8 @@ namespace grupa_net_pk_binance_client
 
     public interface IBinanceClient
     {
+        Task<T> PostRequest<T>(string endpoint, object data);
+        Task<T> GetRequest<T>(string endpoint);
+        string GenerateSignature(string data);
     }
 }

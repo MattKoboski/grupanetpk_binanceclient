@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace grupa_net_pk_binance_client
 {
+    //https://github.com/binance-exchange/binance-official-api-docs
     class Program
     {
         static void Main(string[] args)
@@ -25,10 +26,21 @@ namespace grupa_net_pk_binance_client
         {
             var binanceService = new BinanceService();
             var getAccountTask = binanceService.GetAccount();
-            Task.WaitAll(getAccountTask);
-            var account = getAccountTask.Result;
-            Console.WriteLine(account.balances[0]);
+            //Task.WaitAll(getAccountTask);
+            //var account = getAccountTask.Result;
+            //if (account.updateTime != null)
+            //    Console.WriteLine(account.updateTime * 2);
+            //Console.WriteLine(account);
 
+            //var getPricingTask = binanceService.GetPrice("LTCBTC");
+            //Task.WaitAll(getPricingTask);
+            //var prices = getPricingTask.Result;
+            //Console.WriteLine(prices);
+
+            var buyLTCwithBTC = binanceService.Buy("LTCBTC", 1);
+            Task.WaitAll(buyLTCwithBTC);
+            var buyResult = buyLTCwithBTC.Result;
+            Console.WriteLine(buyResult);
         }
     }
 }
