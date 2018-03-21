@@ -9,7 +9,7 @@ namespace grupa_net_pk_binance_client
 {
     public class BinanceService : IBinanceService
     {
-        private readonly BinanceClient _client;
+        private readonly IBinanceClient _client;
         public BinanceService()
         {
             _client = new BinanceClient();
@@ -43,10 +43,10 @@ namespace grupa_net_pk_binance_client
             return result;
         }
     }
-
     public interface IBinanceService
     {
         Task<dynamic> GetAccount();
         Task<dynamic> GetPrice(string symbol);
+        Task<dynamic> Buy(string symbol, double quantity);
     }
 }

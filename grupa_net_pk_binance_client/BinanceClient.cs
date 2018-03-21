@@ -49,7 +49,6 @@ namespace grupa_net_pk_binance_client
             var hashedString = BitConverter.ToString(hash).Replace("-", string.Empty);
             return hashedString;
         }
-
     }
 
     public interface IBinanceClient
