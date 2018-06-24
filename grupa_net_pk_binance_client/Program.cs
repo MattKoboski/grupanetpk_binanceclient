@@ -22,12 +22,10 @@ namespace grupa_net_pk_binance_client
         {
             var binanceService = new BinanceService();
             var getAccountTask = binanceService.GetAccount();
-            Task.WaitAll(getAccountTask);
             var account = getAccountTask.Result;
             Console.WriteLine(account);
 
             var getLTCprice = binanceService.GetPrice("LTCBTC");
-            Task.WaitAll(getLTCprice);
             var prices = getLTCprice.Result;
             var bestPrice = prices.bids[0][0];
             var quantity = prices.bids[0][1];
@@ -36,10 +34,10 @@ namespace grupa_net_pk_binance_client
             Console.WriteLine(quantity);
             Console.WriteLine(totalPrice);
 
-            var buyLtcWithBtc = binanceService.Buy("LTCBTC", 2);
-            Task.WaitAll(buyLtcWithBtc);
-            var result = buyLtcWithBtc.Result;
-            Console.WriteLine(result);
+//            //Kupowanie LTC przy użyciu BTC
+//            var buyLtcWithBtc = binanceService.Buy("LTCBTC", 2);
+//            var result = buyLtcWithBtc.Result;
+//            Console.WriteLine(result);
 
         }
     }

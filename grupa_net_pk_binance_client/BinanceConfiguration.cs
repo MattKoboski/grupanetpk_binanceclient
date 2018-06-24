@@ -3,7 +3,7 @@
     //Wartości kluczy należy pobrać ze strony https://www.binance.com/ po zalogowaniu
     public static class BinanceConfiguration
     {
-        public static readonly string ApiKey = "wuJktjeGavIgNTEBk0n5FFKargcIMENERKpy13TO9k9oZFU0zLBtmfjeno0VByp4";
-        public static readonly string ApiSecret = "iU1tqMQxzGRLA2fvpNYQZOQo3C2gblpH8cmbhm2JG0yJrPvCAIg7Ah3E0o0f1MxU";
+        public static readonly string ApiKey = "nUWT5PBIohq9NZQRCM6S44Jkk1jh0GTcllIL4PHVGKyHMa2xfKBrMVTVb3jSSRnA";
+        public static readonly string ApiSecret = "WtwgG2F6o0pyYVkafPLV88avvbk8XZQWlvvc8P6qMOxUhNNyd7qpMSV5f5irNutp";
     }
 }
