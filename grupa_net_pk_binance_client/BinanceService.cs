@@ -1,8 +1,4 @@
 ﻿using grupa_net_pk_binance_client.Helpers;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace grupa_net_pk_binance_client
@@ -18,7 +14,9 @@ namespace grupa_net_pk_binance_client
         public async Task<dynamic> GetAccount()
         {
             var timestamp = TimeOperations.GetTimeStampUnixInMilliseconds();
-            var urlData = $"timestamp={timestamp}";
+            //var urlData = $"timestamp={timestamp}";
+            var data = new { timestamp };
+            var urlData = data.ToQueryString();
             var signature = _client.GenerateSignature(urlData);
             var endpoint = $"/api/v3/account?{urlData}&signature={signature}";
             var result = await _client.GetRequest<dynamic>(endpoint);

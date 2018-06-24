@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace grupa_net_pk_binance_client
 {
@@ -25,7 +21,7 @@ namespace grupa_net_pk_binance_client
             var account = getAccountTask.Result;
             Console.WriteLine(account);
 
-            var getLTCprice = binanceService.GetPrice("LTCBTC");
+             var getLTCprice = binanceService.GetPrice("LTCBTC");
             var prices = getLTCprice.Result;
             var bestPrice = prices.bids[0][0];
             var quantity = prices.bids[0][1];
