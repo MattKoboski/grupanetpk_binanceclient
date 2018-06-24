@@ -10,6 +10,7 @@ namespace grupa_net_pk_binance_client
     //https://github.com/binance-exchange/binance-official-api-docs
     //github proj
     //https://github.com/MattKoboski/grupanetpk_binanceclient
+    //konto do założenia na https://www.binance.com/
     class Program
     {
         static void Main(string[] args)
@@ -24,6 +25,22 @@ namespace grupa_net_pk_binance_client
             Task.WaitAll(getAccountTask);
             var account = getAccountTask.Result;
             Console.WriteLine(account);
+
+            var getLTCprice = binanceService.GetPrice("LTCBTC");
+            Task.WaitAll(getLTCprice);
+            var prices = getLTCprice.Result;
+            var bestPrice = prices.bids[0][0];
+            var quantity = prices.bids[0][1];
+            var totalPrice = (double)bestPrice * (double)quantity;
+            Console.WriteLine(bestPrice);
+            Console.WriteLine(quantity);
+            Console.WriteLine(totalPrice);
+
+            var buyLtcWithBtc = binanceService.Buy("LTCBTC", 2);
+            Task.WaitAll(buyLtcWithBtc);
+            var result = buyLtcWithBtc.Result;
+            Console.WriteLine(result);
+
         }
     }
 }

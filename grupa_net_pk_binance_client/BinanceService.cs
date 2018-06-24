@@ -14,6 +14,7 @@ namespace grupa_net_pk_binance_client
         {
             _client = new BinanceClient();
         }
+
         public async Task<dynamic> GetAccount()
         {
             var timestamp = TimeOperations.GetTimeStampUnixInMilliseconds();
@@ -23,6 +24,7 @@ namespace grupa_net_pk_binance_client
             var result = await _client.GetRequest<dynamic>(endpoint);
             return result;
         }
+
         public async Task<dynamic> GetPrice(string symbol)
         {
             var urlData = $"symbol={symbol}&limit=5";
@@ -30,6 +32,7 @@ namespace grupa_net_pk_binance_client
             var result = await _client.GetRequest<dynamic>(endpoint);
             return result;
         }
+
         public async Task<dynamic> Buy(string symbol, double quantity)
         {
             var timestamp = TimeOperations.GetTimeStampUnixInMilliseconds();
@@ -43,6 +46,7 @@ namespace grupa_net_pk_binance_client
             return result;
         }
     }
+
     public interface IBinanceService
     {
         Task<dynamic> GetAccount();
